@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>User Profile</title>
+<style>
+    @font-face {
+    font-family: 'Avenir Next Cyr';
+    src: url('AvenirNextCyr-Demi.eot');
+    src: local('Avenir Next Cyr Demi'), local('AvenirNextCyr-Demi'),
+        url('AvenirNextCyr-Demi.eot?#iefix') format('embedded-opentype'),
+        url('AvenirNextCyr-Demi.woff2') format('woff2'),
+        url('AvenirNextCyr-Demi.woff') format('woff'),
+        url('AvenirNextCyr-Demi.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}
+
+body {
+    font-family: 'Avenir Next Cyr';
+    padding: 20px;
+    background-color: #343338; /* Color1: Black */
+    color: white;
+}
+button
+{
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+    background-color: #000000;
+    border: none;
+    color: white;
+    border-radius: 8px;
+}
+.emergency-button {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: #000000; /* Color2: Grey */
+    position: fixed; /* Fixed position */
+    top: 15px; /* Distance from top */
+    right: 15px; /* Distance from right */
+    z-index: 999; /* Ensure it stays above other content */
+    color: white;
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+    cursor: pointer;
+    background-image: url('emergency.png'); /* Specify the path to your image */
+    background-size: cover; /* Cover the entire background area */
+    background-repeat: no-repeat; /* Prevent image from repeating */
+}
+.button.back-button {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: #000000; /* Color2: Grey */
+    position: fixed;
+    top: 15px;
+    left: 15px;
+    background-image: url('back.png'); /* Specify the path to your image */
+    background-size: cover; /* Cover the entire background area */
+    background-repeat: no-repeat; /* Prevent image from repeating */
+}
+    .profile-container {
+        text-align: center;
+        padding: 20px;
+    }
+    .profile-image {
+        border-radius: 50%;
+        width: 100px;
+        height: 100px;
+        object-fit: cover;
+        margin: 0 auto;
+        display: block;
+    }
+    .profile-info {
+        margin-top: 20px;
+    }
+    .cat{
+        font-size: 30px;
+        display: flex;
+        justify-content: space-between ;
+        display: flex;
+        justify-content: space-between ;
+        margin-right: 10px;
+        background-color: black;
+        border-radius: 10px;
+        padding-left: 20px;
+        padding-right: 20px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+
+    .warning-toggle {
+        margin-top: 2px;
+        margin-right: 60px;
+    }
+    .toggle-switch {
+        position: absolute;
+        width: 60px;
+        height: 30px;
+    }
+
+    .toggle-switch input {
+        opacity: 0;
+        width: 0;
+        height: 0;
+    }
+
+    .toggle-slider {
+        position: absolute;
+        cursor: pointer;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: #ccc;
+        -webkit-transition: .4s;
+        transition: .4s;
+        border-radius: 34px;
+    }
+
+    .toggle-slider:before {
+        position: absolute;
+        content: "";
+        height: 24px;
+        width: 24px;
+        left: 4px;
+        bottom: 4px;
+        background-color: black;
+        -webkit-transition: .4s;
+        transition: .4s;
+        border-radius: 50%;
+    }
+
+    input:checked + .toggle-slider {
+        background-color: #ffffff;
+    }
+
+    input:focus + .toggle-slider {
+        box-shadow: 0 0 1px #3e3d41;
+    }
+
+    input:checked + .toggle-slider:before {
+        -webkit-transform: translateX(28px);
+        -ms-transform: translateX(28px);
+        transform: translateX(28px);
+    }
+
+    /* Rounded sliders */
+    .toggle-slider.round {
+        border-radius: 34px;
+    }
+
+    .toggle-slider.round:before {
+        border-radius: 50%;
+    }
+    p {
+        font-size: 30px;
+    }
+</style>
+</head>
+<body>
+    <a href="tel:8799300847"><button class="emergency-button"></button></a>
+    <a href="dashboard.html"><button class="button back-button"></button></a>
+<div class="profile-container">
+    <img class="profile-image" src="profile.png" alt="Profile Picture"></div>
+    <div class="profile-info">
+        <div class="cat"><div >Name</div><div>John Doe</div></div>
+        <p></p>
+        <div class="cat"><div >Age</div><div>30</div></div>
+        <p></p>
+        <div class="cat"><div >Gender</div><div>Male</div></div>
+        <p></p>
+        <div class="cat"><div >Weight</div><div>70Kg</div></div>
+        <p></p>
+        <div class="cat"><div >Allergies</div><div>Peanuts, Shellfish</div></div>
+        <p></p>
+    </div>
+    <div class="cat">
+        <div>Do not give CPR</div>
+        <div>
+        <div class="warning-toggle">
+                <label class="toggle-switch" style = 'align-items: right;'>
+                    <input type="checkbox">
+                    <span class="toggle-slider round"></span>
+                </label>   
+        </div>
+        </div>
+    </div>
+    <p></p>
+    <div>
+        <a href="index.html"><button>Logout</button></a>
+    </div>
+</div>
+
+</body>
+</html>

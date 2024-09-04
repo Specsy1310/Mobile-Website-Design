@@ -1,0 +1,7 @@
+{"patient":[{
+    "name": "patient1",
+    "age": 30,
+    "gender": "Male",
+    "aller": "Allergic to peanuts",
+    "warning": "Do not revive"
+}]}

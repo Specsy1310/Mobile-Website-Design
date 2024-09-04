@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        @font-face {
+    font-family: 'Avenir Next Cyr';
+    src: url('AvenirNextCyr-Demi.eot');
+    src: local('Avenir Next Cyr Demi'), local('AvenirNextCyr-Demi'),
+        url('AvenirNextCyr-Demi.eot?#iefix') format('embedded-opentype'),
+        url('AvenirNextCyr-Demi.woff2') format('woff2'),
+        url('AvenirNextCyr-Demi.woff') format('woff'),
+        url('AvenirNextCyr-Demi.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}
+
+body {
+    font-family: 'Avenir Next Cyr';
+    padding: 20px;
+    background-color: #343338; /* Color1: Black */
+    color: white;
+}
+
+h1, h3, p {
+    text-align: center;
+}
+
+/* Circular Profile Button */
+.button.profile-button {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: #000000; /* Color2: Grey */
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    background-image: url('profile.png'); /* Specify the path to your image */
+    background-size: cover; /* Cover the entire background area */
+    background-repeat: no-repeat; /* Prevent image from repeating */
+}
+
+/* Emergency Call Button */
+.button.emergency-button {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: #000000; /* Color2: Grey */
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background-image: url('emergency.png'); /* Specify the path to your image */
+    background-size: cover; /* Cover the entire background area */
+    background-repeat: no-repeat; /* Prevent image from repeating */
+}
+.button {
+    flex: 1;
+    margin: 0 10px;
+    padding: 10px;
+    text-align: center;
+    background-color: #6E6C73;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* Highlighted Elements */
+.button.active {
+    background-color: #000000; /* Active button background color */
+}
+.container {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    margin-bottom: 20px; /* Add margin to separate content */
+}
+
+/* Dose and Appointment Elements */
+.element {
+background-color: #000000; /* Color1: Black */
+color: white;
+border-radius: 10px;
+padding: 10px;
+margin-bottom: 10px;
+cursor: pointer;
+overflow: hidden;
+transition: height 0.3s ease;
+}
+
+.element:hover {
+    background-color: #222222; /* Darker color on hover */
+}
+
+.element .info {
+    display: flex;
+    align-items: center;
+}
+
+.element .name {
+    flex: 3;
+    text-align: left;
+}
+
+.element .time {
+    text-align: right;
+    vertical-align: top;
+    margin-top: 5px;
+}
+
+.element .additional-info {
+    display: none;
+    margin-top: 10px;
+}
+
+.element.expanded .additional-info {
+    display: block;
+}
+
+/* Swipe Animation */
+.scroll-over {
+    animation: scrollOver 0.5s;
+}
+@keyframes scrollOver {
+    from {
+        transform: translateX(-100%);
+    }
+    to {
+        transform: translateX(0);
+    }
+}
+    </style>
+    
+</head>
+<body>
+    <h1>Patient Portal - Dashboard</h1>
+
+    <!-- Section 1: Profile and Emergency Call Buttons -->
+    <section>
+        <a href="profilepage.html"><button class="button profile-button"></button></a>
+        <a href="tel:8799300847"><button class="emergency-button"></button></a>
+    </section>
+
+    <!-- Section 2: Doses and Appointments -->
+    <section style="margin-bottom: 20px ; position: relative">
+        <div id="contentbuttons" class="container"> <!-- Added container class here -->
+            <button id="dosesb" class="button active" onclick="toggleButton('dosesb')">Doses(current prescription)</button>
+            <button id="appointmentsb" class="button" onclick="toggleButton('appointmentsb')">Appointments</button>
+        </div>
+        <div id="dashboardContent">
+            <!-- Default Display: Doses -->
+            <div id="doses">
+                <div class="element" onclick="toggleExpand(this)">
+                    <div class="info">
+                        <div class="name">
+                            <p><strong>Medicine Name:</strong> Sample Medicine 1</p>
+                        </div>
+                        <div class="time">
+                            <p>8:00 AM</p>
+                            <p>Before Meal</p>
+                        </div>
+                    </div>
+                    <div class="additional-info" style="align-items: Left;">
+                        <p><strong>Usage:</strong> For Pain Relief</p>
+                        <p><strong>Manufacturer:</strong> MAN1</p>
+                    </div>
+                </div>
+                <div class="element" onclick="toggleExpand(this)">
+                    <div class="info">
+                        <div class="name">
+                            <p><strong>Medicine Name:</strong> Sample Medicine 2</p>
+                        </div>
+                        <div class="time">
+                            <p>9:00 AM</p>
+                            <p>After Meal</p>
+                        </div>
+                    </div>
+                    <div class="additional-info">
+                        <p><strong>Usage:</strong> For Pain Relief</p>
+                        <p><strong>Manufacturer:</strong> MAN2</p>
+                    </div>
+                </div>
+            </div>
+            <div id="appointments" style="display:none">
+                <div class="element" onclick="toggleExpand(this)">
+                    <div class="info">
+                        <div class="name">
+                            <p><strong>Name:</strong> Dr. Smith</p>
+                        </div>
+                        <div class="time">
+                            <p>20<sup>th</sup> march</p>
+                            <p>8:00 AM</p>
+                        </div>
+                    </div>
+                    <div class="additional-info" style="align-items: Left;">
+                        <p><strong>specialization:</strong> orthopediatrecian</p>
+                        <p><strong>Address:</strong> 123 Main St, City</p>
+                    </div>
+                </div>
+                <div class="element" onclick="toggleExpand(this)">
+                    <div class="info">
+                        <div class="name">
+                            <p><strong>Name:</strong> Dr. John</p>
+                        </div>
+                        <div class="time">
+                            <p>22<sup>th</sup> march</p>
+                            <p>9:00 AM</p>
+                        </div>
+                    </div>
+                    <div class="additional-info" style="align-items: Left;">
+                        <p><strong>specialization:</strong> ENT</p>
+                        <p><strong>Address:</strong> 345 Oak St, City</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Switch between Doses and Appointments
+        function toggleButton(buttonId) {
+            var buttons = document.querySelectorAll('.button');
+            buttons.forEach(function(button) {
+                button.classList.remove('active');
+            });
+            document.getElementById(buttonId).classList.add('active');
+            var doses = document.getElementById('doses');
+            var appointments = document.getElementById('appointments');
+            if (buttonId == 'appointmentsb') {
+                doses.style.display = 'none';
+                appointments.style.display = 'block';
+            } else {
+                doses.style.display = 'block';
+                appointments.style.display = 'none';
+            }
+        }
+        function toggleExpand(element) {
+        element.classList.toggle("expanded");
+        }
+    </script>
+</body>
+</html>
